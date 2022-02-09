@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  docker:
+  build-and-push-docker:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -28,7 +28,11 @@ jobs:
         with:
           push: true
           tags: subekti13/simple-express:latest
-
+  
+  deploy-to-portainer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Deploy Stack
         uses: kgierke/portainer-stack-deployment@v1
         with:
