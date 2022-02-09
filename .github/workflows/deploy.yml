@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy Stack
-        uses: subekti404dev/portainer-stack-deployment
+        uses: subekti404dev/portainer-stack-deployment@v1
         with:
           portainer-url: ${{ secrets.PORTAINER_HOST }}
           portainer-username: ${{ secrets.PORTAINER_USERNAME }}
