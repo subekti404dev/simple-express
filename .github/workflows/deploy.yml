@@ -43,4 +43,4 @@ jobs:
           portainer-endpoint: 2
           name: simple-express
           file: stackfile.yml.mustache
-          variables: '{"image": "subekti13/simple-express"}'
+          variables: '{"image": "subekti13/simple-express@latest"}'
