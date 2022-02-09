@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: CI_Deploy
 
 on:
   push:
@@ -30,6 +30,7 @@ jobs:
           tags: subekti13/simple-express:latest
   
   deploy-to-portainer:
+    needs: build-and-push-docker 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
