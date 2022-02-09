@@ -2,6 +2,8 @@ version: "3.8"
 services:
   backend:
     image: {{ image }}
+    ports:
+      - 1112:1111
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
