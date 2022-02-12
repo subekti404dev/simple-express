@@ -60,3 +60,19 @@ jobs:
           name: simple-express
           file: stackfile.yml.mustache
           variables: '{"image": "subekti13/simple-express:${{ steps.previoustag.outputs.tag }}"}'
+
+      - name: Configure Nginx Proxy Manager
+        uses: subekti404dev/nginx-proxy-manager-action@v1
+        with:
+          npm-url:  ${{ secrets.NGINX_PM_URL }}
+          npm-email:  ${{ secrets.NGINX_PM_EMAIL }}
+          npm-password:  ${{ secrets.NGINX_PM_PASSWORD }}
+          domain-name:  ${{ secrets.APP_DOMAIN }}
+          forward-scheme: http
+          forward-host:  ${{ secrets.APP_HOST }}
+          forward-port:  ${{ secrets.APP_PORT }}
+          cache-assets: true
+          block-exploits: true
+          websocket-support: true
+          force-ssl: true
+          http2-support: true
