@@ -1,7 +1,6 @@
 name: CI_Deploy
 
 on:
-  workflow_dispatch:
   push:
     tags:        
       - '**'
@@ -61,6 +60,12 @@ jobs:
           file: stackfile.yml.mustache
           variables: '{"image": "subekti13/simple-express:${{ steps.previoustag.outputs.tag }}"}'
 
+
+  configure-nginx-proxy:
+    needs: deploy-to-portainer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Configure Nginx Proxy Manager
         uses: subekti404dev/nginx-proxy-manager-action@v1
         with:
